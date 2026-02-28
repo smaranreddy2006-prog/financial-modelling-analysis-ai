@@ -1,0 +1,233 @@
+:root {
+    --bg-color: #f8fafc;
+    --surface: #ffffff;
+    --surface-border: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --bg-navy: #0f172a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-danger {
+    color: var(--danger);
+}
+
+.text-success {
+    color: var(--success);
+}
+
+/* Value Formatting */
+.val-positive {
+    color: var(--success);
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.val-negative {
+    color: var(--danger);
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-navy);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.logo .text-primary {
+    color: #60a5fa;
+    /* Lighter blue for dark bg */
+}
+
+.search-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-container input {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    width: 300px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-container input:focus {
+    border-color: #60a5fa;
+}
+
+.search-container button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.search-container button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.icon-large {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+/* Cards */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--surface-border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.header-card h1 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Grids */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.kpi-card h4 {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.kpi-card h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.8rem;
+}
+
+.ai-card {
+    background: linear-gradient(to right, #f0f9ff, #e0f2fe);
+    border-left: 4px solid var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.ai-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.data-grid h3 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn-action {
+    background: var(--success);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.2);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(22, 163, 74, 0.3);
+}
+
+.btn-action:active {
+    transform: translateY(0);
+}

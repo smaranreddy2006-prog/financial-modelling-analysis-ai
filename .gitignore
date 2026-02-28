@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+backend/venv/
+__pycache__/
+*.pyc
+.env
+reliance_model.xlsx
+uvicorn.log

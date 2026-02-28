@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+date: Sat, 28 Feb 2026 06:04:47 GMT
+server: uvicorn
+content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+accept-ranges: bytes
+content-disposition: attachment; filename="RELIANCE.NS_Financial_Model.xlsx"
+content-length: 23856
+last-modified: Sat, 28 Feb 2026 06:04:49 GMT
+etag: "6bb41c9ba5d542f766871715165dfc6f"
+

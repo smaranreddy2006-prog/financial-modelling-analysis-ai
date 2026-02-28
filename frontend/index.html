@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinModel AI | Instant Modeling</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-chart-line text-primary"></i> FinModel AI
+        </div>
+        <div class="search-container">
+            <input type="text" id="ticker-input" placeholder="Enter Ticker (e.g. AAPL, TATAMOTORS.NS)">
+            <button id="btn-analyze"><i class="fa-solid fa-magnifying-glass"></i> Analyze</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Initial State -->
+        <div id="welcome-state" class="center-content">
+            <i class="fa-solid fa-file-excel icon-large text-primary"></i>
+            <h2>Instant Financial Modeling Engine</h2>
+            <p>Generate precise, structured, multi-sheet Excel models in 30 seconds.</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="center-content" style="display: none;">
+            <i class="fa-solid fa-circle-notch fa-spin icon-large text-primary"></i>
+            <h2>Extracting Edgar/BSE Filings...</h2>
+            <p>Parsing 5-year historical statements and generating ratios.</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="center-content" style="display: none;">
+            <i class="fa-solid fa-triangle-exclamation icon-large text-danger"></i>
+            <h2>Analysis Failed</h2>
+            <p id="error-msg"></p>
+        </div>
+
+        <!-- Dashboard State -->
+        <div id="dashboard-state" style="display: none;">
+            <!-- Header section -->
+            <div class="header-card">
+                <div>
+                    <h1 id="company-name">Company Name</h1>
+                    <p class="subtitle"><span id="company-ticker">TICKER</span> | <span
+                            id="company-sector">Sector</span> | Industry: <span id="company-industry">Industry</span>
+                    </p>
+                </div>
+                <div>
+                    <button id="btn-download" class="btn-action"><i class="fa-solid fa-file-excel"></i> Download Excel
+                        Model</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="card kpi-card">
+                    <h4>EBITDA (TTM)</h4>
+                    <h2 id="kpi-ebitda">...</h2>
+                </div>
+                <div class="card kpi-card">
+                    <h4>Return on Equity (ROE)</h4>
+                    <h2 id="kpi-roe">...</h2>
+                </div>
+                <div class="card kpi-card">
+                    <h4>Debt / Equity</h4>
+                    <h2 id="kpi-de">...</h2>
+                </div>
+                <div class="card kpi-card">
+                    <h4>Free Cash Flow (TTM)</h4>
+                    <h2 id="kpi-fcf">...</h2>
+                </div>
+            </div>
+
+            <!-- Valuation & R&D Metrics -->
+            <h3 style="margin-bottom: 1rem; color: var(--text-secondary);">Deep Tech Hardware R&D Projections (24M)</h3>
+            <div class="kpi-grid" style="margin-bottom: 1.5rem;">
+                <div class="card kpi-card" style="border-left: 4px solid var(--danger);">
+                    <h4>Runway (Months)</h4>
+                    <h2 id="kpi-runway">...</h2>
+                </div>
+                <div class="card kpi-card" style="border-left: 4px solid var(--danger);">
+                    <h4>Monthly Burn Rate</h4>
+                    <h2 id="kpi-burn-rate">...</h2>
+                </div>
+                <div class="card kpi-card" style="border-left: 4px solid var(--success);">
+                    <h4>NPV (15% WACC)</h4>
+                    <h2 id="kpi-npv">...</h2>
+                </div>
+                <div class="card kpi-card" style="border-left: 4px solid var(--success);">
+                    <h4>Projected IRR</h4>
+                    <h2 id="kpi-irr">TBD</h2>
+                </div>
+            </div>
+
+            <!-- AI Summary -->
+            <div class="card ai-card">
+                <h3><i class="fa-solid fa-robot text-primary"></i> AI Intelligence Layer</h3>
+                <p id="ai-summary">Generating summary...</p>
+            </div>
+
+            <!-- Charts and Tables -->
+            <div class="data-grid">
+                <div class="card">
+                    <h3>5-Year Revenue Trend</h3>
+                    <div style="position: relative; height:300px; width:100%">
+                        <canvas id="revChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Profitability Margins</h3>
+                    <div style="position: relative; height:300px; width:100%">
+                        <canvas id="marginChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Multi-Chart Grid for Marginal Analysis -->
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-secondary);">Advanced Marginal Analysis
+            </h3>
+            <div class="data-grid" style="margin-bottom: 2rem;">
+                <div class="card">
+                    <h3>Returns (ROA & ROE)</h3>
+                    <div style="position: relative; height:300px; width:100%">
+                        <canvas id="returnsChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Liquidity Ratios (Current & Quick)</h3>
+                    <div style="position: relative; height:300px; width:100%">
+                        <canvas id="liquidityChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Efficiency (Asset Turnover)</h3>
+                    <div style="position: relative; height:300px; width:100%">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Cash Conversion</h3>
+                    <div style="position: relative; height:300px; width:100%">
+                        <canvas id="cashConversionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monte Carlo Simulation -->
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-secondary);">Monte Carlo Price
+                Simulation (252-Day Forecast)</h3>
+            <div class="card" style="margin-bottom: 2rem;">
+                <div style="position: relative; height:450px; width:100%">
+                    <canvas id="monteCarloChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/app.js"></script>
+</body>
+
+</html>
