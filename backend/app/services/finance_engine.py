@@ -157,12 +157,16 @@ class FinanceEngine:
             mean_path = np.mean(price_paths, axis=1)
             p10_path = np.percentile(price_paths, 10, axis=1) # Bear Case
             p90_path = np.percentile(price_paths, 90, axis=1) # Bull Case
+            p5_path = np.percentile(price_paths, 5, axis=1) # 95% Confidence (Lower)
+            p95_path = np.percentile(price_paths, 95, axis=1) # 95% Confidence (Upper)
             
             return {
                 "last_price": last_price,
                 "mean_path": mean_path.tolist(),
                 "p10_path": p10_path.tolist(),
-                "p90_path": p90_path.tolist()
+                "p90_path": p90_path.tolist(),
+                "p5_path": p5_path.tolist(),
+                "p95_path": p95_path.tolist()
             }
         except Exception as e:
             print(f"Monte Carlo failed for {self.ticker_symbol}: {e}")

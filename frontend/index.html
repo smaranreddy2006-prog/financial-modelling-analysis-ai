@@ -163,6 +163,12 @@
                 <div style="position: relative; height:450px; width:100%">
                     <canvas id="monteCarloChart"></canvas>
                 </div>
+                <div id="monte-carlo-summary"
+                    style="display: none; padding: 1rem; margin-top: 1.5rem; background: var(--bg-hover, rgba(0,0,0,0.05)); border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <h4 style="margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);"><i
+                            class="fa-solid fa-bullseye"></i> 95% Confidence Forecast</h4>
+                    <p id="mc-95-text" style="margin-bottom: 0; color: var(--text-secondary); line-height: 1.5;"></p>
+                </div>
             </div>
         </div>
     </main>

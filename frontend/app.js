@@ -285,6 +285,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 });
+
+                if (data.monte_carlo.p5_path && data.monte_carlo.p95_path && data.monte_carlo.mean_path) {
+                    const mean_final = data.monte_carlo.mean_path[data.monte_carlo.mean_path.length - 1];
+                    const p5_final = data.monte_carlo.p5_path[data.monte_carlo.p5_path.length - 1];
+
+                    document.getElementById('mc-95-text').innerHTML = `
+                        <strong>Predicted Expected Price (1 Year):</strong> ${data.currency}${mean_final.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br/>
+                        <em>Based on historical volatility, there is a <strong>95% probability</strong> that the price will hit or remain above <strong>${data.currency}${p5_final.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong> in one year.</em>
+                    `;
+                    document.getElementById('monte-carlo-summary').style.display = 'block';
+                }
             }
         }
     }
